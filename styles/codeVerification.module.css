@@ -1,0 +1,82 @@
+.container {
+  background-image: url('../assets/login-bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
+.buttonsHead {
+  margin-top: 20px;
+}
+
+.back {
+  left: 0;
+  position: absolute;
+  margin-left: 25px;
+}
+
+.info {
+  right: 0;
+  position: absolute;
+  margin-right: 25px;
+}
+
+.containerForm {
+  margin-top: 150px;
+  flex-direction: column;
+}
+
+.blockIcon {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  color: white;
+  font-size: 18px;
+  width: 60%;
+  text-align: center;
+}
+
+.submit {
+  margin-top: 50px;
+  width: 35%;
+  background-color: black;
+  border-color: transparent;
+  color: white;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.div {
+  text-align: center;
+}
+
+.send {
+  margin-top: 50px;
+  width: 50%;
+  background-color: transparent;
+  border-color: white;
+  color: white;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.space {
+  height: 100px;
+}

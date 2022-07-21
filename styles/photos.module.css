@@ -1,0 +1,157 @@
+.container {
+  background-color: #f7f8fe;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
+.logo {
+  left: 0;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.adviceHeader {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  flex-direction: column;
+}
+
+.circles {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -9999;
+}
+
+.advise {
+  background-color: #32235c;
+  width: 150%;
+  border-radius: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.adviseTitle {
+  color: #56edd2;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.adviseMessage {
+  color: #56edd2;
+  font-size: 16px;
+  margin-top: -15px;
+}
+
+.column {
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.alert {
+  align-self: center;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.blackout {
+  background-color: black;
+  height: 720px;
+  width: 250%;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+}
+
+.oval {
+  width: 300px;
+  height: 400px;
+  background: transparent;
+  border-radius: 50%;
+  border-color: #8e57d1;
+  border-style: solid;
+  margin-bottom: 20px;
+}
+
+.space {
+  height: 100px;
+}
+
+.rowSteps {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.empty {
+  border-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.line {
+  background-color: white;
+  height: 2px;
+  width: 20px;
+  margin-inline: 10px;
+}
+
+.subtitle {
+  color: white;
+  font-size: 16px;
+  margin-inline: 20px;
+}
+
+.submit {
+  background-color: transparent;
+  border-color: white;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  width: 40%;
+  height: 60px;
+  margin-top: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.done {
+  background-color: #a74657;
+  border-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  padding-top: 17px;
+}

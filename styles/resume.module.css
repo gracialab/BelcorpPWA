@@ -1,0 +1,129 @@
+.container {
+  background-color: #f7f8fe;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+  flex-direction: column;
+}
+
+.logo {
+  left: 0;
+  top: 0;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.circles {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -9999;
+}
+
+.headerDiv {
+  background-color: #32235c;
+  width: 50%;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  padding-inline: 25px;
+  padding-block: 10px;
+}
+
+.text {
+  color: #56edd2;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.photosDiv {
+  background-color: #eeeeee;
+  width: 50%;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding-inline: 25px;
+  padding-block: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.photo {
+  border-radius: 10px;
+}
+
+.done {
+  background-color: #a74657;
+  border-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  padding-top: 17px;
+  padding-left: 14px;
+  margin-right: 10px;
+  margin-left: 200px;
+}
+
+.row {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.textPhoto {
+  margin-left: 20px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.textPolicy {
+  color: #32235c;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-left: 10px;
+}
+
+.submit {
+  background-color: black;
+  width: 25%;
+  align-self: center;
+  border-color: transparent;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  height: 60px;
+  margin-top: 50px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
