@@ -78,11 +78,16 @@ export default function login() {
             </div>
             <input type="number" name="cellPhone" id="cellPhone" className={styles.input} />
           </div>
-
           <div className={styles.div} >
             <button type="submit" className={styles.submit} >
               Iniciar
             </button>
+          </div>
+          <div className={styles.space} />
+          <div className={styles.div} >
+            <a className={styles.legal} >
+              Términos y condiciones
+            </a>
           </div>
           <div className={styles.space} />
         </form>

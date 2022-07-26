@@ -4,7 +4,9 @@ import Webcam from 'react-webcam'
 import alert from '../assets/alert.png'
 import check from '../assets/check.png'
 import camera from '../assets/camera.png'
+import circles from '../assets/circles.png'
 import styles from '../styles/photos.module.css'
+import logoCorner from '../assets/logoCorner.png'
 import { photosProvider } from '../providers/photos/photosProvider'
 
 const videoConstraints = {
@@ -22,8 +24,14 @@ export default function photos() {
         <title>Fotos</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <div className={styles.logoCorner} >
+        <Image src={logoCorner} />
+      </div>
       <div className={styles.adviceHeader} >
         <div className={styles.advise} >
+          <div className={styles.alertWeb} >
+            <Image src={alert} width={30} height={30} />
+          </div>
           <p className={styles.adviseMessage} >
             Coloca tu rostro {!imageOne ? 'de frente' : !imageTwo ? 'de lado izquierdo' : !imageThree ? 'de lado derecho' : ''} en el círculo y toma la foto.
           </p>
@@ -31,52 +39,57 @@ export default function photos() {
             <Image src={camera} width={50} height={50} />
           </div>
         </div>
-        <Webcam
-          width={400}
-          height={500}
-          audio={false}
-          ref={webcamRef}
-          mirrored={true}
-          className={styles.oval}
-          screenshotFormat="image/jpeg"
-          videoConstraints={videoConstraints}
-        />
-        <div className={styles.rowSteps} >
-          {imageOne ?
-            <div className={styles.done} >
-              <Image src={check} />
-            </div> :
-            <div className={styles.empty} />
-          }
-          <div className={styles.line} />
-          {imageTwo ?
-            <div className={styles.done} >
-              <Image src={check} />
-            </div> :
-            <div className={styles.empty} />
-          }
-          <div className={styles.line} />
-          {imageThree ?
-            <div className={styles.done} >
-              <Image src={check} />
-            </div> :
-            <div className={styles.empty} />
-          }
+        <div className={styles.backCamera} >
+          <Webcam
+            width={400}
+            height={500}
+            audio={false}
+            ref={webcamRef}
+            mirrored={true}
+            className={styles.oval}
+            screenshotFormat="image/jpeg"
+            videoConstraints={videoConstraints}
+          />
+          <div className={styles.rowSteps} >
+            {imageOne ?
+              <div className={styles.done} >
+                <Image src={check} />
+              </div> :
+              <div className={styles.empty} />
+            }
+            <div className={styles.line} />
+            {imageTwo ?
+              <div className={styles.done} >
+                <Image src={check} />
+              </div> :
+              <div className={styles.empty} />
+            }
+            <div className={styles.line} />
+            {imageThree ?
+              <div className={styles.done} >
+                <Image src={check} />
+              </div> :
+              <div className={styles.empty} />
+            }
+          </div>
+          <div className={styles.rowSteps} >
+            <p className={styles.subtitle} >
+              Frontal
+            </p>
+            <p className={styles.subtitle} >
+              Lado izq
+            </p>
+            <p className={styles.subtitle} >
+              Lado der
+            </p>
+          </div>
+          <button className={styles.submit} onClick={!imageOne ? () => capture() : !imageTwo ? () => capture2() : !imageThree ? () => capture3() : null} >
+            Tomar foto
+          </button>
         </div>
-        <div className={styles.rowSteps} >
-          <p className={styles.subtitle} >
-            Frontal
-          </p>
-          <p className={styles.subtitle} >
-            Lado izq
-          </p>
-          <p className={styles.subtitle} >
-            Lado der
-          </p>
-        </div>
-        <button className={styles.submit} onClick={!imageOne ? () => capture() : !imageTwo ? () => capture2() : !imageThree ? () => capture3() : null} >
-          Tomar foto
-        </button>
+      </div>
+      <div className={styles.circles} >
+        <Image src={circles} />
       </div>
       <div className={styles.space} />
     </div >

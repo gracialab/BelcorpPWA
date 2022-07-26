@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import circles from '../assets/circles.png'
 import camera from '../assets/cameraDenied.png'
 import logoHeader from '../assets/logoHeader.png'
+import logoCorner from '../assets/logoCorner.png'
 import styles from '../styles/initForm.module.css'
 import { initFormProvider } from '../providers/initForm/initFormProvider'
 
@@ -15,6 +17,9 @@ export default function initForm() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>
+        <div className={styles.logoCorner} >
+          <Image src={logoCorner} />
+        </div>
         <form onSubmit={submit} className={styles.containerForm} >
           <div className={styles.logoHeader} >
             <Image src={logoHeader} height={75} width={90} />
@@ -50,21 +55,29 @@ export default function initForm() {
           </p>
         </div>
         <div className={styles.space} />
+        <a className={styles.legal} >
+          Términos y condiciones
+        </a>
       </div>
       {modal ?
-        <div className={styles.modal} >
-          <Image src={camera} />
-          <h2 className={styles.title} >
-            ¡Lo sentimos!
-          </h2>
-          <p className={styles.message} >
-            Sin acceso a tu Cámara no podemos continuar.
-          </p>
-          <button className={styles.close} onClick={() => closeModal()} >
-            Cerrar
-          </button>
+        <div className={styles.overlay} >
+          <div className={styles.modal} >
+            <Image src={camera} />
+            <h2 className={styles.title} >
+              ¡Lo sentimos!
+            </h2>
+            <p className={styles.message} >
+              Sin acceso a tu Cámara no podemos continuar.
+            </p>
+            <button className={styles.close} onClick={() => closeModal()} >
+              Cerrar
+            </button>
+          </div>
         </div> : null
       }
+      <div className={styles.circles} >
+        <Image src={circles} />
+      </div>
     </div>
   )
 }

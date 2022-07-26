@@ -3,7 +3,10 @@ import Image from 'next/image'
 import face from '../assets/face.png'
 import edit from '../assets/edit.png'
 import check from '../assets/check.png'
+import circles from '../assets/circles.png'
+import greenFace from '../assets/greenFace.png'
 import styles from '../styles/resume.module.css'
+import logoCorner from '../assets/logoCorner.png'
 import { resumeProvider } from '../providers/resume/resumeProvider'
 
 export default function resume() {
@@ -15,6 +18,9 @@ export default function resume() {
         <title>Resumen</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <div className={styles.logoCorner} >
+        <Image src={logoCorner} />
+      </div>
       <div className={styles.column} >
         <div className={styles.image} >
           <Image src={face} height={50} width={50} />
@@ -23,6 +29,9 @@ export default function resume() {
           <p className={styles.text}>
             Gracias por terminar el test
           </p>
+          <div className={styles.greenFace} >
+            <Image src={greenFace} />
+          </div>
         </div>
         <div className={styles.photosDiv} >
           <div className={styles.row} >
@@ -97,6 +106,9 @@ export default function resume() {
             </button>
           </div>
         </form>
+      </div>
+      <div className={styles.circles} >
+        <Image src={circles} />
       </div>
     </div>
   )
