@@ -14,3 +14,18 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+@font-face {
+  font-family: "Gilroy";
+  src: url('../fonts/Gilroy/Gilroy-Bold.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy Ligth";
+  src: url('../fonts/Gilroy/Gilroy-Ligth.otf');
+  font-weight: bold;
+  font-style: normal;
+}

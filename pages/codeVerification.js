@@ -14,25 +14,27 @@ export default function codeVerification() {
       margin: '4px',
       width: '60px',
       borderRadius: '5px',
-      fontSize: '20px',
-      height: '75px',
-      backgroundColor: 'white',
+      fontSize: '16px',
+      height: '60px',
+      backgroundColor: '#FFF4F4',
       color: 'black',
       border: '1px solid transparent',
       marginTop: 20,
-      paddingLeft: 25
+      paddingLeft: 25,
+      fontFamily: 'Gilroy'
     },
     inputStyleInvalid: {
       margin: '4px',
       width: '60px',
       borderRadius: '5px',
-      fontSize: '20px',
-      height: '75px',
-      backgroundColor: 'white',
+      fontSize: '16px',
+      height: '60px',
+      backgroundColor: '#FFF4F4',
       color: 'red',
       border: '1px solid red',
       marginTop: 20,
-      paddingLeft: 25
+      paddingLeft: 25,
+      fontFamily: 'Gilroy'
     }
   }
 
@@ -56,7 +58,7 @@ export default function codeVerification() {
         </div>
         <div className={styles.blockIcon} >
           <p className={styles.text} >
-            Sabemos que eres tú, pero por favor ingresa tu PIN enviado a tú correo
+            Sabemos que eres tú, pero por favor ingresa tu PIN.
           </p>
         </div>
         <div className={styles.blockIcon} >

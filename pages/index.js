@@ -55,7 +55,7 @@ export default function login() {
       </p>
       <div className={styles.containerForm} >
         <div className={styles.logoBelcorp} >
-          <Image src={logoBelcorp} />
+          <Image src={logoBelcorp} width={150} height={100} />
         </div>
         <div className={styles.logoBranches} >
           <Image src={logoBranches} />
@@ -83,12 +83,6 @@ export default function login() {
             <button type="submit" className={styles.submit} >
               Iniciar
             </button>
-          </div>
-
-          <div className={styles.div} >
-            <p className={styles.link}>
-              Términos y condiciones
-            </p>
           </div>
           <div className={styles.space} />
         </form>

@@ -13,9 +13,9 @@ export const resumeProvider = () => {
     const photo1Base = sessionStorage.getItem('photo1')
     const photo2Base = sessionStorage.getItem('photo2')
     const photo3Base = sessionStorage.getItem('photo3')
-    setPhoto1(<Image unoptimized src={photo1Base} width={75} height={75} className={styles.photo} />)
-    setPhoto2(<Image unoptimized src={photo2Base} width={75} height={75} className={styles.photo} />)
-    setPhoto3(<Image unoptimized src={photo3Base} width={75} height={75} className={styles.photo} />)
+    setPhoto1(<Image unoptimized src={photo1Base} width={40} height={40} className={styles.photo} />)
+    setPhoto2(<Image unoptimized src={photo2Base} width={40} height={40} className={styles.photo} />)
+    setPhoto3(<Image unoptimized src={photo3Base} width={40} height={40} className={styles.photo} />)
   }, [])
 
   const submit = (event) => {

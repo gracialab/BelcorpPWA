@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import camera from '../assets/cameraDenied.png'
-import logoCorner from '../assets/logoCorner.png'
 import logoHeader from '../assets/logoHeader.png'
 import styles from '../styles/initForm.module.css'
-import circles from '../assets/backgroundCircles.png'
 import { initFormProvider } from '../providers/initForm/initFormProvider'
 
 export default function initForm() {
@@ -16,20 +14,17 @@ export default function initForm() {
         <title>Inicio encuesta</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className={styles.logo}>
-        <Image src={logoCorner} />
-      </div>
       <div>
         <form onSubmit={submit} className={styles.containerForm} >
           <div className={styles.logoHeader} >
-            <Image src={logoHeader} />
+            <Image src={logoHeader} height={75} width={90} />
           </div>
           <div className={styles.center} >
             <h1 className={styles.textHeader} >
               ¡Hola!
             </h1>
           </div>
-          <p>
+          <p className={styles.text} >
             Nombre del producto que estás probando*
           </p>
           <input type="text" name="name" id="name" className={styles.input} />
@@ -41,7 +36,7 @@ export default function initForm() {
           <p className={styles.instructions} >
             Instrucciones
           </p>
-          <p className={styles.instructions} >
+          <p className={styles.instructions2} >
             1. Busca un lugar con luz.
           </p>
           <p className={styles.instructions2} >
@@ -54,30 +49,20 @@ export default function initForm() {
             4. Recuerda siempre aplicar el producto siguiendo las instrucciónes de su empaque.
           </p>
         </div>
-        <div className={styles.div} >
-          <p className={styles.link}>
-            Términos y condiciones
-          </p>
-        </div>
-        <div className={styles.circles} >
-          <Image src={circles} />
-        </div>
         <div className={styles.space} />
       </div>
       {modal ?
-        <div className={styles.overlay} >
-          <div className={styles.modal} >
-            <Image src={camera} />
-            <h2 className={styles.title} >
-              ¡Lo sentimos!
-            </h2>
-            <p className={styles.message} >
-              Sin acceso a tu Cámara no podemos continuar.
-            </p>
-            <button className={styles.close} onClick={() => closeModal()} >
-              Cerrar
-            </button>
-          </div>
+        <div className={styles.modal} >
+          <Image src={camera} />
+          <h2 className={styles.title} >
+            ¡Lo sentimos!
+          </h2>
+          <p className={styles.message} >
+            Sin acceso a tu Cámara no podemos continuar.
+          </p>
+          <button className={styles.close} onClick={() => closeModal()} >
+            Cerrar
+          </button>
         </div> : null
       }
     </div>
