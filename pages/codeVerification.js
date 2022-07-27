@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import backIcon from '../assets/back.png'
 import helpIcon from '../assets/helpIcon.png'
 import ReactCodeInput from 'react-code-input'
 import blockIcon from '../assets/blockIcon.png'
+import HeaderConfig from '../components/headerConfig'
 import styles from '../styles/codeVerification.module.css'
 import { codeVerificationProvider } from '../providers/codeVerification/codeVerificationProvider'
 
@@ -40,10 +40,7 @@ export default function codeVerification() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Código de verificación</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <HeaderConfig title={'Código de verificación'} />
       <div className={styles.buttonsHead} >
         <div className={styles.back} onClick={() => router.push('/')}>
           <Image src={backIcon} />

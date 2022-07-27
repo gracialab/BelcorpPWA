@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import circles from '../assets/circles.png'
@@ -6,16 +5,14 @@ import buttonBack from '../assets/buttonBack.png'
 import logoCorner from '../assets/logoCorner.png'
 import styles from '../styles/endPage.module.css'
 import purpleCheck from '../assets/purpleCheck.png'
+import HeaderConfig from '../components/headerConfig'
 
 export default function endPage() {
   const router = useRouter()
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Finalización</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <HeaderConfig title={'Finalización'} />
       <div className={styles.column} >
         <div className={styles.logo} >
           <Image src={purpleCheck} />

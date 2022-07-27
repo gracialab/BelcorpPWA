@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import Webcam from 'react-webcam'
 import alert from '../assets/alert.png'
@@ -7,6 +6,7 @@ import camera from '../assets/camera.png'
 import circles from '../assets/circles.png'
 import styles from '../styles/photos.module.css'
 import logoCorner from '../assets/logoCorner.png'
+import HeaderConfig from '../components/headerConfig'
 import { photosProvider } from '../providers/photos/photosProvider'
 
 const videoConstraints = {
@@ -20,10 +20,7 @@ export default function photos() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Fotos</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <HeaderConfig title={'Fotos'} />
       <div className={styles.logoCorner} >
         <Image src={logoCorner} />
       </div>

@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import face from '../assets/face.png'
 import edit from '../assets/edit.png'
@@ -7,6 +6,7 @@ import circles from '../assets/circles.png'
 import greenFace from '../assets/greenFace.png'
 import styles from '../styles/resume.module.css'
 import logoCorner from '../assets/logoCorner.png'
+import HeaderConfig from '../components/headerConfig'
 import { resumeProvider } from '../providers/resume/resumeProvider'
 
 export default function resume() {
@@ -14,10 +14,7 @@ export default function resume() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Resumen</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <HeaderConfig title={'Resumen'} />
       <div className={styles.logoCorner} >
         <Image src={logoCorner} />
       </div>

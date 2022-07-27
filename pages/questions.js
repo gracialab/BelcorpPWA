@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import circles from '../assets/circles.png'
 import dataQuestions from '../public/data.json'
 import logoCorner from '../assets/logoCorner.png'
 import styles from '../styles/questions.module.css'
+import HeaderConfig from '../components/headerConfig'
 import { questionsProvider } from '../providers/questions/questionsProvider'
 
 export default function questions() {
@@ -11,10 +11,7 @@ export default function questions() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Preguntas</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <HeaderConfig title={'Preguntas'} />
       <div className={styles.logoCorner} >
         <Image src={logoCorner} />
       </div>

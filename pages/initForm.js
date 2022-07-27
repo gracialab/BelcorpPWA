@@ -1,10 +1,10 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import circles from '../assets/circles.png'
 import camera from '../assets/cameraDenied.png'
 import logoHeader from '../assets/logoHeader.png'
 import logoCorner from '../assets/logoCorner.png'
 import styles from '../styles/initForm.module.css'
+import HeaderConfig from '../components/headerConfig'
 import { initFormProvider } from '../providers/initForm/initFormProvider'
 
 export default function initForm() {
@@ -12,10 +12,7 @@ export default function initForm() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Inicio encuesta</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      <HeaderConfig title={'Inicio encuesta'} />
       <div>
         <div className={styles.logoCorner} >
           <Image src={logoCorner} />
