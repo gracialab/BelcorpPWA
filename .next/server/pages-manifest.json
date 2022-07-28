@@ -1,6 +1,13 @@
 {
-  "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/_app": "pages/_app.js",
+  "/": "pages/index.html",
+  "/initForm": "pages/initForm.html",
+  "/codeVerification": "pages/codeVerification.html",
+  "/endPage": "pages/endPage.html",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/resume": "pages/resume.html",
+  "/questions": "pages/questions.html",
+  "/photos": "pages/photos.html",
+  "/404": "pages/404.html"
 }
