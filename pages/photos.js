@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Webcam from 'react-webcam'
 import alert from '../assets/alert.png'
 import check from '../assets/check.png'
 import camera from '../assets/camera.png'
@@ -9,14 +8,8 @@ import logoCorner from '../assets/logoCorner.png'
 import HeaderConfig from '../components/headerConfig'
 import { photosProvider } from '../providers/photos/photosProvider'
 
-const videoConstraints = {
-  width: 390,
-  height: 525,
-  facingMode: 'user'
-}
-
 export default function photos() {
-  const { capture, capture2, capture3, webcamRef, imageOne, imageTwo, imageThree } = photosProvider()
+  const { capture, capture2, capture3, imageOne, imageTwo, imageThree, canvasRef, handleVideoOnPlay, videoHeight, videoRef, videoWidth } = photosProvider()
 
   return (
     <div className={styles.container}>
@@ -37,16 +30,10 @@ export default function photos() {
           </div>
         </div>
         <div className={styles.backCamera} >
-          <Webcam
-            width={400}
-            height={500}
-            audio={false}
-            ref={webcamRef}
-            mirrored={true}
-            className={styles.oval}
-            screenshotFormat="image/jpeg"
-            videoConstraints={videoConstraints}
-          />
+          <video ref={videoRef} height={videoHeight} width={videoWidth} onPlay={handleVideoOnPlay} />
+          <div className={styles.canva} >
+            <canvas ref={canvasRef} />
+          </div>
           <div className={styles.rowSteps} >
             {imageOne ?
               <div className={styles.done} >

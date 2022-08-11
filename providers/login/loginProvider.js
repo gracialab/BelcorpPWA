@@ -1,9 +1,11 @@
 import { useRouter } from 'next/router'
+import { loginService } from '../../services/login'
 
 export const loginProvider = () => {
   const router = useRouter()
+  const { login } = loginService()
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     if (event.target.email.value && event.target.cellPhone.value) {
       if (event.target.cellPhone.value.length === 10) {

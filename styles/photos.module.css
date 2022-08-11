@@ -148,6 +148,13 @@
     border-radius: 10px;
     width: 130%;
     align-self: center;
+    padding-top: 50px;
+  }
+
+  .canva {
+    position: absolute;
+    bottom: 425px;
+    right: 675px;
   }
 }
 
