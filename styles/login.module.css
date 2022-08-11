@@ -121,6 +121,7 @@
     border-radius: 10px;
     font-size: 18px;
     font-family: 'Gilroy', sans-serif;
+    cursor: pointer;
   }
 
   .legal {
@@ -128,6 +129,7 @@
     font-size: 16px;
     font-family: 'Gilroy Ligth', sans-serif;
     color: #FFFFFF;
+    cursor: pointer;
   }
 }
 

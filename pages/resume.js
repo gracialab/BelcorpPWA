@@ -42,7 +42,7 @@ export default function resume() {
               <div className={styles.done} >
                 <Image src={check} />
               </div>
-              <div onClick={() => router.push('photos')} >
+              <div onClick={() => router.push('photos')} className={styles.cursor} >
                 <Image src={edit} />
               </div>
             </div>
@@ -58,7 +58,7 @@ export default function resume() {
               <div className={styles.done} >
                 <Image src={check} />
               </div>
-              <div onClick={() => router.push('photos')} >
+              <div onClick={() => router.push('photos')} className={styles.cursor} >
                 <Image src={edit} />
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function resume() {
               <div className={styles.done} >
                 <Image src={check} />
               </div>
-              <div onClick={() => router.push('photos')} >
+              <div onClick={() => router.push('photos')} className={styles.cursor} >
                 <Image src={edit} />
               </div>
             </div>

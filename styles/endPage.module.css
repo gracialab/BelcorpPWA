@@ -81,6 +81,7 @@
     height: 60px;
     margin-top: 75px;
     margin-bottom: 150px;
+    cursor: pointer;
   }
 
   .circles {

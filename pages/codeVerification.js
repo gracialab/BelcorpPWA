@@ -59,7 +59,7 @@ export default function codeVerification() {
           </p>
         </div>
         <div className={styles.blockIcon} >
-          <ReactCodeInput type='password' fields={4} {...propsCodeComponent} onChange={onChange} value='' name='code' />
+          <ReactCodeInput type='number' fields={4} {...propsCodeComponent} onChange={onChange} value='' name='code' />
         </div>
         <div className={styles.div} >
           <button type="submit" className={styles.submit} onClick={submit} >

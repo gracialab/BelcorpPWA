@@ -55,6 +55,17 @@
     font-family: 'Gilroy Ligth', sans-serif;
   }
 
+  .video {
+    width: 80%;
+    height: 300px;
+  }
+
+  .canva {
+    position: absolute;
+    top: 32%;
+    left: 40px;
+  }
+
   .alert {
     align-self: center;
     margin-left: 10px;
@@ -151,10 +162,15 @@
     padding-top: 50px;
   }
 
+  .video {
+    width: 560px;
+    height: 400px;
+  }
+
   .canva {
     position: absolute;
     bottom: 425px;
-    right: 675px;
+    right: 690px;
   }
 }
 
@@ -219,6 +235,7 @@
   font-size: 14px;
   margin-bottom: 20px;
   font-family: 'Gilroy', sans-serif;
+  cursor: pointer;
 }
 
 .done {

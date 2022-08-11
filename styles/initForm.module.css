@@ -191,6 +191,7 @@
     justify-content: center;
     align-items: center;
     width: 75%;
+    cursor: pointer;
   }
 
   .submit {
@@ -204,6 +205,7 @@
     font-size: 16px;
     font-weight: bold;
     font-family: 'Gilroy', sans-serif;
+    cursor: pointer;
   }
 
   .logoCorner {

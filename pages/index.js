@@ -37,7 +37,7 @@ export default function login() {
                 Telefono
               </label>
             </div>
-            <input type="number" name="cellPhone" id="cellPhone" className={styles.input} />
+            <input type="number" name="cellPhone" id="cellPhone" maxLength={10} className={styles.input} />
           </div>
           <div className={styles.div} >
             <button type="submit" className={styles.submit} >

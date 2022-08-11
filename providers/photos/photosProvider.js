@@ -1,6 +1,6 @@
 import * as faceapi from 'face-api.js'
 import { useRouter } from 'next/router'
-import React, { useRef, useCallback, useState, useEffect } from 'react'
+import { useRef, useCallback, useState, useEffect } from 'react'
 
 export const photosProvider = () => {
   const router = useRouter()
@@ -11,8 +11,6 @@ export const photosProvider = () => {
   const [modelsLoaded, setModelsLoaded] = useState(false)
 
   const videoRef = useRef()
-  const videoHeight = 400
-  const videoWidth = 560
   const canvasRef = useRef()
 
   useEffect(() => {
@@ -24,7 +22,7 @@ export const photosProvider = () => {
         video.play()
       })
       .catch(err => {
-        console.error('Houve um erro:', err)
+        console.error('Hubo un error:', err)
       })
 
     const loadModels = async () => {
@@ -40,22 +38,22 @@ export const photosProvider = () => {
     }
 
     loadModels()
-  }, [canvasRef, videoRef])
+  }, [])
 
   function handleVideoOnPlay() {
+    const width = window.screen.width
     setInterval(async () => {
-      if (canvasRef && canvasRef.current) {
+      if (canvasRef && canvasRef.current && modelsLoaded) {
         canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(videoRef.current)
-        const displaySize = { width: videoWidth, height: videoHeight }
+        const displaySize = { width: width > 500 ? 525 : 300, height: width > 500 ? 400 : 200 }
 
         faceapi.matchDimensions(canvasRef.current, displaySize)
-        const detections = await faceapi.detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions().withAgeAndGender()
+        const detections = await faceapi.detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
 
         if (detections) {
           const resizedDetections = faceapi.resizeResults(detections, displaySize)
           sessionStorage.setItem('accuracy', resizedDetections.detection.score)
-          canvasRef && canvasRef.current && canvasRef.current.getContext('2d').clearRect(0, 0, videoWidth, videoHeight)
-          canvasRef && canvasRef.current && faceapi.draw.drawDetections(canvasRef.current, resizedDetections)
+          canvasRef && canvasRef.current && canvasRef.current.getContext('2d').clearRect(0, 0, width > 500 ? 400 : 200, width > 500 ? 400 : 360)
 
           canvasRef && canvasRef.current && faceapi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections)
         }
@@ -135,8 +133,7 @@ export const photosProvider = () => {
     videoRef,
     canvasRef,
     imageThree,
-    videoWidth,
-    videoHeight,
+    modelsLoaded,
     handleVideoOnPlay
   }
 }

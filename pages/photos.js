@@ -9,7 +9,7 @@ import HeaderConfig from '../components/headerConfig'
 import { photosProvider } from '../providers/photos/photosProvider'
 
 export default function photos() {
-  const { capture, capture2, capture3, imageOne, imageTwo, imageThree, canvasRef, handleVideoOnPlay, videoHeight, videoRef, videoWidth } = photosProvider()
+  const { capture, capture2, capture3, imageOne, imageTwo, imageThree, canvasRef, handleVideoOnPlay, modelsLoaded, videoRef } = photosProvider()
 
   return (
     <div className={styles.container}>
@@ -30,10 +30,12 @@ export default function photos() {
           </div>
         </div>
         <div className={styles.backCamera} >
-          <video ref={videoRef} height={videoHeight} width={videoWidth} onPlay={handleVideoOnPlay} />
-          <div className={styles.canva} >
-            <canvas ref={canvasRef} />
-          </div>
+          <video ref={videoRef} className={styles.video} onPlay={() => handleVideoOnPlay()} />
+          {modelsLoaded ?
+            <div className={styles.canva} >
+              <canvas ref={canvasRef} />
+            </div> : <></>
+          }
           <div className={styles.rowSteps} >
             {imageOne ?
               <div className={styles.done} >
