@@ -44,8 +44,8 @@ export const photosProvider = () => {
     const width = window.screen.width
     setInterval(async () => {
       if (canvasRef && canvasRef.current && modelsLoaded) {
-        canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(videoRef.current)
-        const displaySize = { width: width > 500 ? 525 : 300, height: width > 500 ? 400 : 200 }
+        canvasRef.current.innerHTML = faceapi.createCanvas(videoRef.current)
+        const displaySize = { width: width > 500 ? 525 : 300, height: width > 500 ? 400 : 220 }
 
         faceapi.matchDimensions(canvasRef.current, displaySize)
         const detections = await faceapi.detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()

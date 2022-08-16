@@ -57,13 +57,18 @@
 
   .video {
     width: 80%;
-    height: 300px;
+    height: 400px;
   }
 
   .canva {
     position: absolute;
-    top: 32%;
-    left: 40px;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 400px;
+    transform: translate(38px, 90px);
   }
 
   .alert {
@@ -78,6 +83,7 @@
 
   .backCamera {
     background-color: transparent;
+    position: relative;
   }
 }
 
@@ -160,6 +166,7 @@
     width: 130%;
     align-self: center;
     padding-top: 50px;
+    position: relative;
   }
 
   .video {
@@ -169,8 +176,13 @@
 
   .canva {
     position: absolute;
-    bottom: 425px;
-    right: 690px;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+    width: 560px;
+    height: 400px;
+    transform: translate(84px, 50px);
   }
 }
 
