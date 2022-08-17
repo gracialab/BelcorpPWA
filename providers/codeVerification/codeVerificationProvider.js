@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
+import { loginService } from '../../services/login'
 import { codeVerificationService } from '../../services/codeVerification'
 
 export const codeVerificationProvider = () => {
@@ -8,6 +9,7 @@ export const codeVerificationProvider = () => {
   const [seconds, setSeconds] = useState(45)
   const [userData, setUserData] = useState()
 
+  const { login } = loginService()
   const { validateCode } = codeVerificationService()
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export const codeVerificationProvider = () => {
 
   const submit = async (event) => {
     event.preventDefault()
-    if (code && code.length === 6) {
+    if (code && code.length === 4) {
       const data = {
         code: code,
         generateCode: false,
@@ -33,6 +35,7 @@ export const codeVerificationProvider = () => {
       }
       const response = await validateCode(data)
       if (response.token) {
+        sessionStorage.setItem('token', response.token)
         router.push('initForm')
       } else {
         alert('El código ingresado no coincide')
@@ -42,8 +45,22 @@ export const codeVerificationProvider = () => {
     }
   }
 
-  const sendCode = () => {
-    setSeconds(45)
+  const sendCode = async () => {
+    if (seconds < 1) {
+      setSeconds(45)
+      const email = sessionStorage.getItem('email')
+      const cellPhone = sessionStorage.getItem('cellPhone')
+      const data = {
+        email: email,
+        phone: cellPhone,
+        generateCode: true,
+        platform: "Skinmap"
+      }
+      const response = await login(data)
+      if (response.idUser) {
+        alert(`Tu código de verificación es ${response.random}`)
+      }
+    }
   }
 
   return {
