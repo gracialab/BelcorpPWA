@@ -25,15 +25,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/codeVerification": [
+    "/endPage": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/codeVerification.js"
+      "static/chunks/pages/endPage.js"
     ],
     "/initForm": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/initForm.js"
+    ],
+    "/questions": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/questions.js"
+    ],
+    "/resume": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/resume.js"
     ]
   },
   "ampFirstPages": []

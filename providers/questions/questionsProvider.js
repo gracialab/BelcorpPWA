@@ -15,11 +15,14 @@ export const questionsProvider = () => {
         four: event.target.four.value,
         five: event.target.five.value,
       }
-      // const token = sessionStorage.getItem('token')
+      const token = sessionStorage.getItem('token')
       sessionStorage.setItem('questions', questions)
-      // const response = await sendForm({ formCollection: questions }, token)
-      // console.log(response)
-      router.push('resume')
+      const response = await sendForm({ formCollection: questions }, token)
+      if (response.user_ultimate._id) {
+        router.push('resume')
+      } else {
+        alert('Ocurrió un error, por favor intenta nuevamente')
+      }
     } else {
       alert('Por favor contesta todas las preguntas')
     }
