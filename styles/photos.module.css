@@ -57,7 +57,7 @@
 
   .video {
     width: 80%;
-    height: 400px;
+    height: 300px;
   }
 
   .canva {
@@ -67,8 +67,8 @@
     top: 0;
     left: 0;
     width: 80%;
-    height: 400px;
-    transform: translate(38px, 90px);
+    height: 300px;
+    transform: translate(38px, 40px);
   }
 
   .alert {

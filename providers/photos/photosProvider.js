@@ -18,6 +18,9 @@ export const photosProvider = () => {
       .getUserMedia({ video: { width: 300 } })
       .then(stream => {
         let video = videoRef.current
+        video.setAttribute('autoplay', '')
+        video.setAttribute('muted', '')
+        video.setAttribute('playsinline', '')
         video.srcObject = stream
         video.play()
       })
