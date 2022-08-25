@@ -36,6 +36,13 @@ export default function photos() {
               <canvas ref={canvasRef} />
             </div> : <></>
           }
+          <div className={styles.circleWrapper}>
+            <div className={styles.circleContainer}>
+              <div className={styles.circlePhoto}>
+              <div className={styles.circlePhotoContent}></div>
+              </div>
+            </div>
+          </div>
           <div className={styles.rowSteps} >
             {imageOne ?
               <div className={styles.done} >
