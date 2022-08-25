@@ -71,7 +71,7 @@
   }
 
   .submit {
-    margin-top: 10px;
+    margin-top: 30px;
     width: 100%;
     background-color: black;
     border-color: transparent;
@@ -104,6 +104,55 @@
     display: flex;
     box-shadow: 2px 2px 5px #000000;
   }
+
+  .row {
+    display: none;
+  }
+
+  .columnMobile {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+  }
+
+  .rowMobile {
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+  }
+
+  .boxStep {
+    background-color: #DCDCDC;
+    border-radius: 5px;
+    flex-direction: column;
+    display: flex;
+    margin-inline: 2px;
+    margin-top: 4px;
+    width: 50%;
+  }
+
+  .step {
+    color: #32235c;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+
+  .logoStep {
+    align-self: center;
+    margin-top: -15px;
+  }
+
+  .stepText {
+    align-self: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #32235c;
+    font-size: 14px;
+    padding-inline: 10px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -127,6 +176,14 @@
     padding-inline: 40px;
   }
 
+  .columnMobile {
+    display: none;
+  }
+
+  .rowMobile {
+    display: none;
+  }
+
   .input {
     background-color: #dcdcdc;
     border-color: transparent;
@@ -143,7 +200,47 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    width: 100%;
+  }
+
+  .row {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .boxStep {
+    background-color: #DCDCDC;
+    border-radius: 5px;
+    flex-direction: column;
+    display: flex;
+    margin-inline: 5px;
+    width: 20%;
+  }
+
+  .step {
+    color: #32235c;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+
+  .logoStep {
+    align-self: center;
+    margin-top: -25px;
+  }
+
+  .stepText {
+    align-self: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: #32235c;
+    font-size: 16px;
+    padding-inline: 15px;
   }
 
   .circles {
@@ -186,23 +283,23 @@
 
   .legal {
     text-decoration: underline;
-    font-family: 'Gilroy Ligth', sans-serif;
+    font-family: 'Gilroy', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    width: 100%;
     cursor: pointer;
   }
 
   .submit {
-    margin-top: 10px;
-    width: 100%;
+    margin-top: 50px;
+    width: 30%;
     background-color: black;
     border-color: transparent;
     color: white;
     height: 70px;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     font-family: 'Gilroy', sans-serif;
     cursor: pointer;

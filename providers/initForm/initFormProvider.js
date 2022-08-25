@@ -7,18 +7,14 @@ export const initFormProvider = () => {
 
   const submit = async (event) => {
     event.preventDefault()
-    if (event.target.name.value) {
-      navigator.getUserMedia({ video: true }, function (localMediaStream) {
-        sessionStorage.setItem('product', event.target.name.value)
+    navigator.mediaDevices
+      .getUserMedia({ video: { width: 300 } })
+      .then(stream => {
         router.push('photos')
-      },
-        function (err) {
-          setModal(true)
-        }
-      )
-    } else {
-      alert('Ingresa el nombre del producto')
-    }
+      })
+      .catch(err => {
+        console.error('Hubo un error:', err)
+      })
   }
 
   const closeModal = () => {

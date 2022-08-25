@@ -1,3 +1,3 @@
 export const environment = {
-  url_api: 'https://95qyl4lkq3.execute-api.us-east-1.amazonaws.com/dev/'
+  url_api: 'https://494232b9tk.execute-api.us-east-1.amazonaws.com/dev/'
 }

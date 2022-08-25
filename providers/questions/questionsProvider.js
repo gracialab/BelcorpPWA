@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router'
+import { questionsService } from '../../services/questions'
 
 export const questionsProvider = () => {
   const router = useRouter()
+  const { sendForm } = questionsService()
 
   const submit = async (event) => {
     event.preventDefault()
@@ -13,8 +15,14 @@ export const questionsProvider = () => {
         four: event.target.four.value,
         five: event.target.five.value,
       }
+      const token = sessionStorage.getItem('token')
       sessionStorage.setItem('questions', questions)
-      router.push('resume')
+      const response = await sendForm({ formCollection: questions }, token)
+      if (response.user_ultimate._id) {
+        router.push('resume')
+      } else {
+        alert('Ocurrió un error, por favor intenta nuevamente')
+      }
     } else {
       alert('Por favor contesta todas las preguntas')
     }
