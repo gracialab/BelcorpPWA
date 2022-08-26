@@ -17,6 +17,7 @@
     "react": "18.2.0",
     "react-code-input": "^3.10.1",
     "react-dom": "18.2.0",
+    "react-use": "^17.4.0",
     "react-webcam": "^7.0.1",
     "sharp": "^0.30.7",
     "webpack": "^5.19.0"
