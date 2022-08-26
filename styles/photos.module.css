@@ -45,6 +45,7 @@
     justify-content: center;
     margin-top: 50px;
     flex-direction: column;
+    height: 100%;
   }
 
   .adviseMessage {
@@ -192,9 +193,13 @@
     position: relative;
   }
 
-  .video {
-    width: 560px;
-    height: 400px;
+  .videoMobile {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .canva {
