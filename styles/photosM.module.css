@@ -216,7 +216,7 @@
   inset: 0;
   border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
   padding: 5px;
-  background: linear-gradient(45deg, red, blue);
+  background: linear-gradient(45deg, #7456ED, #FC5E5E);
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
