@@ -1,26 +1,23 @@
-import { useEffect, useState } from 'react';
-import {useMedia} from 'react-use';
-
-import { CameraDesktop } from '../components/CameraDesktop';
-import { CameraPhone } from '../components/CameraPhone';
-
-
+import { useMedia } from 'react-use'
+import { useEffect, useState } from 'react'
+import { CameraPhone } from '../components/CameraPhone'
+import { CameraDesktop } from '../components/CameraDesktop'
 
 export default function photos() {
-  const [showing, setShowing] = useState(false);
-  const isWide = useMedia('(min-width: 768px)', false);  
-  
+  const [showing, setShowing] = useState(false)
+  const isWide = useMedia('(min-width: 768px)', false)
+
   useEffect(() => {
-    setShowing(true);
-  }, []);
-  
+    setShowing(true)
+  }, [])
+
   if (!showing) {
-    return null;
+    return null
   }
-  
+
   if (typeof window === 'undefined') {
-    return <></>;
+    return <></>
   } else {
-    return isWide ? <CameraDesktop /> : <CameraPhone /> 
+    return isWide ? <CameraDesktop /> : <CameraPhone />
   }
 }
