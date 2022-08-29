@@ -108,8 +108,6 @@
     box-shadow: 0 0 0 200px rgba(0, 0, 0, 1);
 
   }
-
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -219,6 +217,7 @@
 
   .circleWrapper {
     width: 65%;
+    overflow: hidden;
   }
 
   .circlePhoto {
@@ -227,6 +226,7 @@
     position: relative;
     height: 400px;
     width: 55%;
+    overflow: hidden;
     border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
 
   }
