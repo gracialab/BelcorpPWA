@@ -9,22 +9,11 @@ import { photosProvider } from '../providers/photos/photosProvider'
 export const CameraPhone = () => {
   const { capture, capture2, capture3, imageOne, imageTwo, imageThree, canvasRef, handleVideoOnPlay, modelsLoaded, videoRef } = photosProvider()
   return (
-    <div className={styles.container}>
-      <HeaderConfig title={'Fotos'} />
-      <div className={styles.adviceHeader} >
-        <video ref={videoRef} className={styles.videoMobile} onPlay={() => handleVideoOnPlay()} />
-        {modelsLoaded ?
-          <div className={styles.canva} >
-            <canvas ref={canvasRef} />
-          </div> : <></>
-        }
-        <div className={styles.circleWrapper}>
-          <div className={styles.circleContainer}>
-            <div className={styles.circlePhoto}>
-              <div className={styles.circlePhotoContent}></div>
-            </div>
-          </div>
-        </div>
+    <div>
+      <video ref={videoRef} className={styles.videoMobile} onPlay={() => handleVideoOnPlay()} >
+        <HeaderConfig title={'Fotos'} />
+      </video >
+      <div className={styles.alignItems} >
         <div className={styles.advise} >
           <div className={styles.alertWeb} >
             <Image src={alert} width={30} height={30} />
@@ -34,6 +23,17 @@ export const CameraPhone = () => {
           </p>
           <div className={styles.alert} >
             <Image src={camera} width={50} height={50} />
+          </div>
+        </div>
+        <div className={styles.circleWrapper}>
+          <div className={styles.circleContainer}>
+            <div className={styles.circlePhoto}>
+              {modelsLoaded ?
+                <div className={styles.canva} >
+                  <canvas ref={canvasRef} />
+                </div> : <></>
+              }
+            </div>
           </div>
         </div>
         <div className={styles.backCamera} >
@@ -75,7 +75,9 @@ export const CameraPhone = () => {
           </button>
         </div>
       </div>
-      <div className={styles.space} />
-    </div >
+      {/* <div className={styles.adviceHeader} > */}
+      {/* <div className={styles.alignItems} >
+        </div> */}
+    </div>
   )
 }
