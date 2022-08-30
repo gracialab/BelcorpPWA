@@ -1,46 +1,18 @@
-[
-  {
-    "title": "¿Que sensación te dio el producto en el cuerpo?",
+{
+  "one":{
+    "title": "¿Cómo clasificas esta experiencia?",
     "options": [
-      "Frio",
-      "Calor",
-      "Picazón",
-      "Frescura"
+      "No me gusto nada",
+      "No me gusto",
+      "No me interesa",
+      "Me gusto",
+      "Me gusto mucho"
     ]
   },
-  {
-    "title": "¿Durante la prueba experimentaste alguna de estas sensaciones?",
-    "options": [
-      "Picazón",
-      "Dolor",
-      "Ardor",
-      "Nada"
-    ]
+  "two":{
+    "title": "¿Qué fue lo que más y menos te gustó?"
   },
-  {
-    "title": "¿Cuanto tiempo dejaste el producto en el cuerpo?",
-    "options": [
-      "10 a 20 segundos",
-      "hasta 1 minuto",
-      "1 a 5 minutos"
-    ]
-  },
-  {
-    "title": "¿Que sensación te dio el producto en el cuerpo?",
-    "options": [
-      "Frio",
-      "Calor",
-      "Picazón",
-      "Frescura"
-    ]
-  },
-  {
-    "title": "¿Que sensación te dio el producto en el cuerpo?",
-    "options": [
-      "Frio",
-      "Calor",
-      "Picazón",
-      "Frescura"
-    ]
+  "three":{
+    "title": "¿Tienes sugerencias o comentarios que nos permitan mejorar?"
   }
-]
+}

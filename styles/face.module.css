@@ -1,0 +1,36 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  justify-items: center;
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  padding: .5rem 0;
+  cursor: pointer;
+}
+
+.active {
+  background: #32235C20;
+}
+
+.item p {
+  text-align: center;
+  font-size: .75rem;
+  padding: .5rem 1rem;
+  margin: 0;
+}
+.item:nth-child(1),
+.item:nth-child(2),
+.item:nth-child(3),
+.item:nth-child(4) {
+  border-right: 2px solid #000;
+  width: 100%;
+}
+

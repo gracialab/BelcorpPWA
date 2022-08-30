@@ -1,20 +1,15 @@
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { questionsService } from '../../services/questions'
 
 export const questionsProvider = () => {
   const router = useRouter()
   const { sendForm } = questionsService()
+  const [questions, setQuestions] = useState({})
 
   const submit = async (event) => {
     event.preventDefault()
-    if (event.target.one.value && event.target.two.value && event.target.three.value && event.target.four.value && event.target.five.value) {
-      const questions = {
-        one: event.target.one.value,
-        two: event.target.two.value,
-        three: event.target.three.value,
-        four: event.target.four.value,
-        five: event.target.five.value,
-      }
+    if (Object.keys(questions).length === 3) {
       const token = sessionStorage.getItem('token')
       sessionStorage.setItem('questions', questions)
       const response = await sendForm({ formCollection: questions }, token)
@@ -32,9 +27,19 @@ export const questionsProvider = () => {
     setModal(false)
   }
 
+  const updateForm = (payload) => {
+    const { name, value } = payload;
+    setQuestions({...questions,[name]: value})
+  }
+
+
+
   return {
     submit,
     router,
+    questions,
+    setQuestions,
+    updateForm,
     closeModal
   }
 }
