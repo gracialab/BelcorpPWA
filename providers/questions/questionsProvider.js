@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { questionsService } from '../../services/questions'
 
 export const questionsProvider = () => {
@@ -9,10 +9,23 @@ export const questionsProvider = () => {
 
   const submit = async (event) => {
     event.preventDefault()
+    const photo1Base = sessionStorage.getItem('photo1')
+    const photo2Base = sessionStorage.getItem('photo2')
+    const photo3Base = sessionStorage.getItem('photo3')
     if (Object.keys(questions).length === 3) {
       const token = sessionStorage.getItem('token')
       sessionStorage.setItem('questions', questions)
-      const response = await sendForm({ formCollection: questions }, token)
+      const response = await sendForm(
+        {
+          formCollection: questions,
+          images: {
+            front: photo1Base,
+            right: photo2Base,
+            left: photo3Base
+          }
+        },
+        token
+      )
       if (response.user_ultimate._id) {
         router.push('resume')
       } else {
@@ -29,17 +42,14 @@ export const questionsProvider = () => {
 
   const updateForm = (payload) => {
     const { name, value } = payload;
-    setQuestions({...questions,[name]: value})
+    setQuestions({ ...questions, [name]: value })
   }
-
-
 
   return {
     submit,
     router,
-    questions,
-    setQuestions,
     updateForm,
-    closeModal
+    closeModal,
+    setQuestions,
   }
 }

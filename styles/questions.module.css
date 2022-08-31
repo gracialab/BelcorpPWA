@@ -9,7 +9,7 @@
     position: fixed;
     top: 0;
     left: 0;
-  
+
     /* Preserve aspet ratio */
     min-width: 100%;
     min-height: 100%;
@@ -28,7 +28,15 @@
     font-size: 16px;
     color: #2c3e50;
     font-weight: bold;
-    font-family: 'Gilroy Ligth' , sans-serif;
+    font-family: 'Gilroy Ligth', sans-serif;
+  }
+
+  .title {
+    color: #32235C;
+    font-size: 40px;
+    margin-left: 20px;
+    font-weight: bold;
+    font-family: 'Gilroy', sans-serif;
   }
 
   .button {
@@ -37,20 +45,19 @@
     width: 50%;
     height: 50px;
     border-radius: 5px;
-    margin-top: 25px;
+    margin-top: 75px;
     color: white;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 25px;
-    font-family: 'Gilroy' , sans-serif;
+    font-family: 'Gilroy', sans-serif;
   }
 
   .rigth {
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    margin-right: 25px;
   }
 
   .circles {
@@ -69,7 +76,7 @@
     position: fixed;
     top: 0;
     left: 0;
-  
+
     /* Preserve aspet ratio */
     min-width: 100%;
     min-height: 100%;
@@ -87,12 +94,20 @@
     margin-left: 25px;
   }
 
+  .title {
+    color: #32235C;
+    font-size: 40px;
+    margin-left: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Gilroy', sans-serif;
+  }
+
   .form {
     background-color: #EEEEEE;
     padding: 20px 80px;
     border-radius: 10px;
     margin-top: 50px;
-    overflow-y: scroll;
     /* height: 60%; */
     width: 700px;
   }
@@ -102,7 +117,7 @@
     font-size: 16px;
     color: #2c3e50;
     font-weight: bold;
-    font-family: 'Gilroy' , sans-serif;
+    font-family: 'Gilroy', sans-serif;
   }
 
   .button {
@@ -116,14 +131,14 @@
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 25px;
-    font-family: 'Gilroy' , sans-serif;
+    font-family: 'Gilroy', sans-serif;
     cursor: pointer;
   }
 
   .rigth {
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     display: flex;
   }
 
@@ -133,15 +148,6 @@
     right: 0;
     z-index: -9999;
   }
-}
-
-.title {
-  color: #32235C;
-  font-size: 40px;
-  margin-left: 20px;
-  text-align: center;
-  font-weight: bold;
-  font-family: 'GalanoGrotesque-Black' , sans-serif;
 }
 
 .column {
@@ -163,7 +169,7 @@
   margin-left: 10px;
   color: #2c3e50;
   font-size: 16px;
-  font-family: 'Gilroy Ligth' , sans-serif;
+  font-family: 'Gilroy Ligth', sans-serif;
 }
 
 .flex {

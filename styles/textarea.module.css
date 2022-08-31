@@ -1,10 +1,33 @@
-.textarea {
-  width:100%;
-  resize:none;
-  border-radius: 8px;
-  padding:1rem
+@media only screen and (max-width: 767px) {
+  .textarea {
+    width: 95%;
+    resize: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'Gilroy Ligth', sans-serif;
+    font-size: 14px;
+    margin-inline: 10px;
+  }
+
+  .title {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+    margin-inline: 10px;
+  }
 }
-.title {
-  font-family: 'Gilroy-Bold';
-  font-weight:bold;
+
+@media only screen and (min-width: 768px) {
+  .textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'Gilroy Ligth', sans-serif;
+    font-size: 14px;
+  }
+
+  .title {
+    font-family: 'Gilroy', sans-serif;
+    font-size: 16px;
+  }
 }

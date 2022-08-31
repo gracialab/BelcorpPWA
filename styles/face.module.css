@@ -1,36 +1,98 @@
-.container {
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
-  justify-items: center;
-  border: 2px solid #000;
-  border-radius: 8px;
+@media only screen and (max-width: 767px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    border: 2px solid #000;
+    border-radius: 8px;
+    margin-inline: 10px;
+  }
+
+  .title {
+    color: black;
+    font-size: 16px;
+    margin-inline: 10px;
+    font-family: 'Gilroy', sans-serif;
+  }
+
+  .img {
+    display: flex;
+    justify-content: center;
+  }
+
+  .item {
+    padding: .5rem 0;
+    cursor: pointer;
+    background-color: white;
+    border: transparent;
+  }
+
+  .active {
+    background: #32235C20;
+  }
+
+  .item p {
+    text-align: center;
+    font-size: .75rem;
+    padding: .5rem 1rem;
+    margin: 0;
+    font-size: 12px;
+    font-family: 'Gilroy Ligth', sans-serif;
+  }
+
+  .item:nth-child(1),
+  .item:nth-child(2),
+  .item:nth-child(3),
+  .item:nth-child(4) {
+    border-right: 2px solid #000;
+    width: 100%;
+  }
 }
 
-.img {
-  display: flex;
-  justify-content: center;
-}
+@media only screen and (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    border: 2px solid #000;
+    border-radius: 8px;
+  }
 
-.item {
-  padding: .5rem 0;
-  cursor: pointer;
-}
+  .title {
+    color: black;
+    font-size: 16px;
+    font-family: 'Gilroy', sans-serif;
+  }
 
-.active {
-  background: #32235C20;
-}
+  .img {
+    display: flex;
+    justify-content: center;
+  }
 
-.item p {
-  text-align: center;
-  font-size: .75rem;
-  padding: .5rem 1rem;
-  margin: 0;
-}
-.item:nth-child(1),
-.item:nth-child(2),
-.item:nth-child(3),
-.item:nth-child(4) {
-  border-right: 2px solid #000;
-  width: 100%;
-}
+  .item {
+    padding: .5rem 0;
+    cursor: pointer;
+    background-color: white;
+    border: transparent;
+  }
 
+  .active {
+    background: #32235C20;
+  }
+
+  .item p {
+    text-align: center;
+    font-size: .75rem;
+    padding: .5rem 1rem;
+    margin: 0;
+    font-family: 'Gilroy Ligth', sans-serif;
+  }
+
+  .item:nth-child(1),
+  .item:nth-child(2),
+  .item:nth-child(3),
+  .item:nth-child(4) {
+    border-right: 2px solid #000;
+    width: 100%;
+  }
+}

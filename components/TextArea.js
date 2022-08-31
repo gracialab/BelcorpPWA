@@ -1,8 +1,8 @@
 import styles from '../styles/textarea.module.css'
 export const TextArea = ({ title, onChange }) => {
 
-  const handleChange =({target}) => {
-    onChange({name: title, value: target.value})
+  const handleChange = ({ target }) => {
+    onChange({ name: title, value: target.value })
   }
 
   return (

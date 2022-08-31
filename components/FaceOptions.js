@@ -8,32 +8,31 @@ import face5 from "../assets/face-5.svg";
 import styles from '../styles/face.module.css'
 
 const images = [face1, face2, face3, face4, face5]
-export const FaceOptions = ({options, title, onChange}) => {
-
+export const FaceOptions = ({ options, title, onChange }) => {
 
   const [currentElement, setCurrentElement] = useState(null)
 
   const handleClick = (i, value) => {
     setCurrentElement(i)
-    if(onChange){
-      onChange({name:title, value})
+    if (onChange) {
+      onChange({ name: title, value })
     }
   }
 
   return (
     <>
-      <p className="">{title}</p>
+      <p className={styles.title}>{title}</p>
       <div className={styles.container}>
         {
           images.map((img, i) => (
             <div key={i} className={`${styles.item}  ${currentElement === i && styles.active}`}
-            role="button"
-            onClick={() => handleClick(i,options[i])}
+              role="button"
+              onClick={() => handleClick(i, options[i])}
             >
               <div className={styles.img} >
                 <Image src={img} />
               </div>
-              { options && <p>{options[i]}</p>}
+              {options && <p>{options[i]}</p>}
             </div>
           ))
         }
