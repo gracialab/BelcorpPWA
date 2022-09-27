@@ -66,7 +66,7 @@ export const photosProvider = () => {
     setInterval(async () => {
       if (canvasRef && canvasRef.current && modelsLoaded) {
         canvasRef.current.innerHTML = faceapi.createCanvas(videoRef.current)
-        const displaySize = { width: width > 500 ? 525 : 300, height: 400 }
+        const displaySize = { width: 650, height: 400 }
 
         faceapi.matchDimensions(canvasRef.current, displaySize)
         const detections = await faceapi.detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
@@ -74,7 +74,7 @@ export const photosProvider = () => {
         if (detections) {
           const resizedDetections = faceapi.resizeResults(detections, displaySize)
           sessionStorage.setItem('accuracy', resizedDetections.detection.score)
-          canvasRef && canvasRef.current && canvasRef.current.getContext('2d').clearRect(0, 0, width > 500 ? 525 : 300, 400)
+          canvasRef && canvasRef.current && canvasRef.current.getContext('2d').clearRect(0, 0, 650, 400)
 
           canvasRef && canvasRef.current && faceapi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections)
         }
