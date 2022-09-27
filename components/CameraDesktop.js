@@ -9,7 +9,7 @@ import HeaderConfig from '../components/headerConfig'
 import { photosProvider } from '../providers/photos/photosProvider'
 
 export const CameraDesktop = () => {
-  const { capture, capture2, capture3, imageOne, imageTwo, imageThree, canvasRef, handleVideoOnPlay, modelsLoaded, videoRef } = photosProvider()
+  const { capture, capture2, capture3, imageOne, imageTwo, imageThree, canvasRef, handleVideoOnPlay, modelsLoaded, videoRef, outputCanvas } = photosProvider()
   return (
     <div>
       <div className={styles.container}>
@@ -35,6 +35,9 @@ export const CameraDesktop = () => {
                 <div className={styles.circlePhoto}>
                   <div className={styles.circlePhotoContent}>
                     <video ref={videoRef} className={styles.video} onPlay={() => handleVideoOnPlay()} />
+                    <div>
+                      <canvas ref={outputCanvas} className={styles.videoOutput}></canvas>
+                    </div>
                     {modelsLoaded ?
                       <div className={styles.canva} >
                         <canvas ref={canvasRef} />

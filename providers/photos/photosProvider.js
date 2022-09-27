@@ -1,4 +1,6 @@
 import * as faceapi from 'face-api.js'
+import { Camera } from '@mediapipe/camera_utils'
+import { SelfieSegmentation, } from '@mediapipe/selfie_segmentation';
 import { useRouter } from 'next/router'
 import { useRef, useCallback, useState, useEffect } from 'react'
 
@@ -12,6 +14,7 @@ export const photosProvider = () => {
 
   const videoRef = useRef()
   const canvasRef = useRef()
+  const outputCanvas = useRef()
 
   useEffect(() => {
     navigator.mediaDevices
@@ -38,8 +41,24 @@ export const photosProvider = () => {
         faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL),
       ]).then(setModelsLoaded(true))
     }
-
     loadModels()
+    const selfieSegmentation = new SelfieSegmentation({locateFile: (file) => {
+      return `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`;
+    }});
+    selfieSegmentation.setOptions({
+      modelSelection: 1,
+    });
+    selfieSegmentation.onResults(onResults);
+    
+    const camera = new Camera(videoRef.current, {
+      onFrame: async () => {
+        await selfieSegmentation.send({image: videoRef.current});
+      },
+      width: videoRef.current.width,
+      height: videoRef.current.height
+    });
+    camera.start();
+    
   }, [])
 
   function handleVideoOnPlay() {
@@ -61,8 +80,29 @@ export const photosProvider = () => {
         }
       }
     }, 1000)
+    
+    
   }
-
+  function onResults(results) {
+    const canvasCtx = outputCanvas.current.getContext('2d')
+    canvasCtx.save();
+    canvasCtx.clearRect(0, 0, outputCanvas.current.width, outputCanvas.current.height);
+    canvasCtx.drawImage(results.segmentationMask, 0, 0,
+      outputCanvas.current.width, outputCanvas.current.height);
+  
+    // Only overwrite existing pixels.
+    canvasCtx.globalCompositeOperation = 'source-in';
+    // canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
+    
+    // Only overwrite missing pixels.
+    // canvasCtx.globalCompositeOperation = 'destination-atop';
+    // canvasCtx.fillStyle = 'blur';
+    // canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
+    canvasCtx.drawImage(
+        results.image, 0, 0, outputCanvas.current.width, outputCanvas.current.height);
+  
+    canvasCtx.restore();
+  }
   const capture = useCallback(
     () => {
       const data = sessionStorage.getItem('accuracy')
@@ -134,6 +174,7 @@ export const photosProvider = () => {
     imageTwo,
     videoRef,
     canvasRef,
+    outputCanvas,
     imageThree,
     modelsLoaded,
     handleVideoOnPlay
