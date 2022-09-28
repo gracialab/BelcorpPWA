@@ -84,6 +84,7 @@ export const photosProvider = () => {
     
   }
   function onResults(results) {
+    let activeEffect = 'mask';
     const canvasCtx = outputCanvas.current.getContext('2d')
     canvasCtx.save();
     canvasCtx.clearRect(0, 0, outputCanvas.current.width, outputCanvas.current.height);
@@ -91,13 +92,25 @@ export const photosProvider = () => {
       outputCanvas.current.width, outputCanvas.current.height);
   
     // Only overwrite existing pixels.
-    canvasCtx.globalCompositeOperation = 'source-in';
+    // canvasCtx.globalCompositeOperation = 'source-in';
     // canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
     
     // Only overwrite missing pixels.
     // canvasCtx.globalCompositeOperation = 'destination-atop';
     // canvasCtx.fillStyle = 'blur';
     // canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
+     // Only overwrite existing pixels.
+     if (activeEffect === 'mask' || activeEffect === 'both') {
+      canvasCtx.globalCompositeOperation = 'source-in';
+      // This can be a color or a texture or whatever...
+      // canvasCtx.fillStyle = '#00FF007F';
+      canvasCtx.fillRect(0, 0, outputCanvas.current.width, outputCanvas.current.height);
+    } else {
+      canvasCtx.globalCompositeOperation = 'source-out';
+      // canvasCtx.fillStyle = '#0000FF7F';
+      canvasCtx.fillRect(0, 0, outputCanvas.current.width, outputCanvas.current.height);
+    }
+    // canvasCtx.globalCompositeOperation = 'destination-atop';
     canvasCtx.drawImage(
         results.image, 0, 0, outputCanvas.current.width, outputCanvas.current.height);
   
