@@ -1,8 +1,8 @@
 import * as faceapi from 'face-api.js'
-import { Camera } from '@mediapipe/camera_utils'
-import { SelfieSegmentation, } from '@mediapipe/selfie_segmentation';
 import { useRouter } from 'next/router'
 import { useRef, useCallback, useState, useEffect } from 'react'
+
+// import {JEELIZFACEFILTER, NN_4EXPR} from "facefilter";
 
 export const photosProvider = () => {
   const router = useRouter()
@@ -42,22 +42,6 @@ export const photosProvider = () => {
       ]).then(setModelsLoaded(true))
     }
     loadModels()
-    const selfieSegmentation = new SelfieSegmentation({locateFile: (file) => {
-      return `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`;
-    }});
-    selfieSegmentation.setOptions({
-      modelSelection: 1,
-    });
-    selfieSegmentation.onResults(onResults);
-    
-    const camera = new Camera(videoRef.current, {
-      onFrame: async () => {
-        await selfieSegmentation.send({image: videoRef.current});
-      },
-      width: videoRef.current.width,
-      height: videoRef.current.height
-    });
-    camera.start();
     
   }, [])
 
@@ -83,39 +67,27 @@ export const photosProvider = () => {
     
     
   }
-  function onResults(results) {
-    let activeEffect = 'mask';
-    const canvasCtx = outputCanvas.current.getContext('2d')
-    canvasCtx.save();
-    canvasCtx.clearRect(0, 0, outputCanvas.current.width, outputCanvas.current.height);
-    canvasCtx.drawImage(results.segmentationMask, 0, 0,
-      outputCanvas.current.width, outputCanvas.current.height);
-  
-    // Only overwrite existing pixels.
-    // canvasCtx.globalCompositeOperation = 'source-in';
-    // canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
+
+  // const face = () => {
+  //   JEELIZFACEFILTER.init({
+  //     canvasId: outputCanvas.current,
+  //     NNCPath:NN_4EXPR , // path to JSON neural network model (NN_DEFAULT.json by default)
+  //     callbackReady: function(errCode, spec){
+  //       if (errCode){
+  //         console.log('AN ERROR HAPPENS. ERROR CODE =', errCode);
+  //         return;
+  //       }
+  //       // [init scene with spec...]
+  //       console.log('INFO: JEELIZFACEFILTER IS READY');
+  //     }, //end callbackReady()
     
-    // Only overwrite missing pixels.
-    // canvasCtx.globalCompositeOperation = 'destination-atop';
-    // canvasCtx.fillStyle = 'blur';
-    // canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
-     // Only overwrite existing pixels.
-     if (activeEffect === 'mask' || activeEffect === 'both') {
-      canvasCtx.globalCompositeOperation = 'source-in';
-      // This can be a color or a texture or whatever...
-      // canvasCtx.fillStyle = '#00FF007F';
-      canvasCtx.fillRect(0, 0, outputCanvas.current.width, outputCanvas.current.height);
-    } else {
-      canvasCtx.globalCompositeOperation = 'source-out';
-      // canvasCtx.fillStyle = '#0000FF7F';
-      canvasCtx.fillRect(0, 0, outputCanvas.current.width, outputCanvas.current.height);
-    }
-    // canvasCtx.globalCompositeOperation = 'destination-atop';
-    canvasCtx.drawImage(
-        results.image, 0, 0, outputCanvas.current.width, outputCanvas.current.height);
-  
-    canvasCtx.restore();
-  }
+  //     // called at each render iteration (drawing loop)
+  //     callbackTrack: function(detectState){
+  //       // Render your scene here
+  //       // [... do something with detectState]
+  //     } //end callbackTrack()
+  //   });
+  // }
   const capture = useCallback(
     () => {
       const data = sessionStorage.getItem('accuracy')

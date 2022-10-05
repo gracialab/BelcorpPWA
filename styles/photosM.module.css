@@ -63,7 +63,6 @@
     border-radius: 50%;
     object-fit: cover;
     overflow: hidden;
-    visibility: hidden;
   }
   .videoOutput {
     top: 0px;
@@ -212,7 +211,6 @@
     align-self: center;
     border-radius: 50%;
     object-fit: cover;
-    visibility: hidden;
   }
   .videoOutput {
     transform: scale(.9);

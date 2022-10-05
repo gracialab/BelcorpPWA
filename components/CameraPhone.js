@@ -30,9 +30,9 @@ export const CameraPhone = () => {
                 <div className={styles.circlePhoto}>
                   <div className={styles.circlePhotoContent}>
                     <video ref={videoRef} className={styles.video} onPlay={() => handleVideoOnPlay()} />
-                    <div>
+                    {/* <div>
                       <canvas ref={outputCanvas} className={styles.videoOutput}></canvas>
-                    </div>
+                    </div> */}
                     {modelsLoaded ?
                       <div className={styles.canva} >
                         <canvas ref={canvasRef} />
