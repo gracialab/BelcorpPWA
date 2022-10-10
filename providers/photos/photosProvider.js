@@ -11,6 +11,7 @@ export const photosProvider = () => {
   const [imageThree, setImageThree] = useState()
 
   const [modelsLoaded, setModelsLoaded] = useState(false)
+  const [showBackground, setShowBackground] = useState(false) ;
 
   const videoRef = useRef()
   const canvasRef = useRef()
@@ -68,42 +69,35 @@ export const photosProvider = () => {
     
   }
 
-  // const face = () => {
-  //   JEELIZFACEFILTER.init({
-  //     canvasId: outputCanvas.current,
-  //     NNCPath:NN_4EXPR , // path to JSON neural network model (NN_DEFAULT.json by default)
-  //     callbackReady: function(errCode, spec){
-  //       if (errCode){
-  //         console.log('AN ERROR HAPPENS. ERROR CODE =', errCode);
-  //         return;
-  //       }
-  //       // [init scene with spec...]
-  //       console.log('INFO: JEELIZFACEFILTER IS READY');
-  //     }, //end callbackReady()
-    
-  //     // called at each render iteration (drawing loop)
-  //     callbackTrack: function(detectState){
-  //       // Render your scene here
-  //       // [... do something with detectState]
-  //     } //end callbackTrack()
-  //   });
-  // }
+  const offBackground = (time) => {
+    setTimeout(() => {
+      setShowBackground(false)
+    }, time);
+  }
+
   const capture = useCallback(
     () => {
       const data = sessionStorage.getItem('accuracy')
-      if (parseFloat(data) > 0.8) {
-        canvasRef.width = 1920
-        canvasRef.height = 1080
+      setShowBackground(true)
+      setTimeout(() => {
+        if (parseFloat(data) > 0.8) {
+          canvasRef.width = 1920
+          canvasRef.height = 1080
+  
+          let ctx = canvasRef && canvasRef.current && canvasRef.current.getContext('2d')
+          ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height)
+  
+          let image = canvasRef.current.toDataURL('image/jpeg')
+          setImageOne(image)
+          sessionStorage.setItem('photo1', image)
+        } else {
+          alert('Por favor ubica mejor tu rostro, dentro de las lineas demarcadas y acercate más a la cámara')
+        }
+        
+      }, 1500);
 
-        let ctx = canvasRef && canvasRef.current && canvasRef.current.getContext('2d')
-        ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height)
-
-        let image = canvasRef.current.toDataURL('image/jpeg')
-        setImageOne(image)
-        sessionStorage.setItem('photo1', image)
-      } else {
-        alert('Por favor ubica mejor tu rostro, dentro de las lineas demarcadas y acercate más a la cámara')
-      }
+      offBackground(2000)
+      
     },
     [canvasRef, videoRef]
   )
@@ -111,42 +105,54 @@ export const photosProvider = () => {
   const capture2 = useCallback(
     () => {
       const data = sessionStorage.getItem('accuracy')
-      if (parseFloat(data) > 0.8) {
-        canvasRef.width = 1920
-        canvasRef.height = 1080
+      setShowBackground(true)
+      setTimeout(() => {
+        if (parseFloat(data) > 0.8) {
+          canvasRef.width = 1920
+          canvasRef.height = 1080
+  
+          let ctx = canvasRef && canvasRef.current && canvasRef.current.getContext('2d')
+          ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height)
+  
+          let image = canvasRef.current.toDataURL('image/jpeg')
+          setImageTwo(image)
+          sessionStorage.setItem('photo2', image)
+        } else {
+          alert('Por favor ubica mejor tu rostro, dentro de las lineas demarcadas y acercate más a la cámara')
+        }
+        
+      }, 1500);
 
-        let ctx = canvasRef && canvasRef.current && canvasRef.current.getContext('2d')
-        ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height)
-
-        let image = canvasRef.current.toDataURL('image/jpeg')
-        setImageTwo(image)
-        sessionStorage.setItem('photo2', image)
-      } else {
-        alert('Por favor ubica mejor tu rostro, dentro de las lineas demarcadas y acercate más a la cámara')
-      }
+      offBackground(2000)
     },
     [canvasRef, videoRef]
   )
 
   const capture3 = useCallback(
     () => {
+
       const data = sessionStorage.getItem('accuracy')
-      if (parseFloat(data) > 0.8) {
-        canvasRef.width = 1920
-        canvasRef.height = 1080
-
-        let ctx = canvasRef && canvasRef.current && canvasRef.current.getContext('2d')
-        ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height)
-
-        let image = canvasRef.current.toDataURL('image/jpeg')
-        setImageThree(image)
-        sessionStorage.setItem('photo3', image)
-        videoRef.current.pause()
-        videoRef.current.srcObject.getTracks()[0].stop()
-        router.push('questions')
-      } else {
-        alert('Por favor ubica mejor tu rostro, dentro de las lineas demarcadas y acercate más a la cámara')
-      }
+      setShowBackground(true)
+      setTimeout(() => {
+        if (parseFloat(data) > 0.8) {
+          canvasRef.width = 1920
+          canvasRef.height = 1080
+  
+          let ctx = canvasRef && canvasRef.current && canvasRef.current.getContext('2d')
+          ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height)
+  
+          let image = canvasRef.current.toDataURL('image/jpeg')
+          setImageThree(image)
+          sessionStorage.setItem('photo3', image)
+          videoRef.current.pause()
+          videoRef.current.srcObject.getTracks()[0].stop()
+          router.push('questions')
+        } else {
+          alert('Por favor ubica mejor tu rostro, dentro de las lineas demarcadas y acercate más a la cámara')
+        }
+        
+      }, 1500);
+      offBackground(2000)
     },
     [canvasRef, videoRef]
   )
@@ -159,6 +165,7 @@ export const photosProvider = () => {
     imageTwo,
     videoRef,
     canvasRef,
+    showBackground, 
     outputCanvas,
     imageThree,
     modelsLoaded,

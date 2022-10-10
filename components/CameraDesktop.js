@@ -9,7 +9,7 @@ import HeaderConfig from '../components/headerConfig'
 import { photosProvider } from '../providers/photos/photosProvider'
 
 export const CameraDesktop = () => {
-  const { capture, capture2, capture3, imageOne, imageTwo, imageThree, canvasRef, handleVideoOnPlay, modelsLoaded, videoRef, outputCanvas } = photosProvider()
+  const { capture, capture2, capture3, imageOne, imageTwo, imageThree, canvasRef, handleVideoOnPlay, modelsLoaded, videoRef, outputCanvas, showBackground } = photosProvider()
   return (
     <div>
       <div className={styles.container}>
@@ -90,6 +90,9 @@ export const CameraDesktop = () => {
         </div>
         <div className={styles.space} />
       </div >
+      {showBackground && <div className={styles.showBackground}>
+
+      </div>}
     </div>
   )
 }
