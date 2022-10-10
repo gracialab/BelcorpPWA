@@ -30,7 +30,7 @@
     flex-direction: row;
     display: flex;
     background-color: #242424;
-    width: 90%;
+    width: 60%;
     border-radius: 10px;
     justify-content: flex-start;
     align-items: flex-start;
@@ -149,7 +149,7 @@
     flex-direction: row;
     display: flex;
     background-color: #32235C;
-    width: 90%;
+    width: 60%;
     border-radius: 10px;
     justify-content: flex-start;
     align-items: flex-start;
@@ -186,7 +186,8 @@
   .backCamera {
     background-color: #000000;
     border-radius: 10px;
-    width: 150%;
+    max-width: 1280px;
+    width: 100%;
     align-self: center;
     position: relative;
     padding-block: 50px;

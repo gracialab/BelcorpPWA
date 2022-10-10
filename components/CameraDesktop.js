@@ -23,7 +23,7 @@ export const CameraDesktop = () => {
               <Image src={alert} width={30} height={30} />
             </div>
             <p className={styles.adviseMessage} >
-              Coloca tu rostro {!imageOne ? 'de frente' : !imageTwo ? 'de lado izquierdo' : !imageThree ? 'de lado derecho' : ''} en el círculo y toma la foto.
+              Por favor aumenta el brillo de tu pantalla al máximo y coloca tu rostro {!imageOne ? 'de frente' : !imageTwo ? 'de lado izquierdo' : !imageThree ? 'de lado derecho' : ''} en el círculo y toma la foto.
             </p>
             <div className={styles.alert} >
               <Image src={camera} width={50} height={50} />
