@@ -63,6 +63,7 @@
     border-radius: 50%;
     object-fit: cover;
     overflow: hidden;
+    transform: rotateY(180deg);
   }
 
   .videoOutput {
@@ -86,7 +87,8 @@
     left: 0;
     width: 560px;
     height: 400px;
-    transform: translate(-120px, 0px);
+    transform: translate(-120px, 0px) rotateY(180deg);
+    /* transform: translate(-135px, 0px) rotateY(180deg); */
   }
 
   .alert {
@@ -234,7 +236,7 @@
     left: 0;
     width: 560px;
     height: 400px;
-    transform: translate(-135px, 0px);
+    transform: translate(-135px, 0px) rotateY(180deg);
   }
 
   .circleWrapper {

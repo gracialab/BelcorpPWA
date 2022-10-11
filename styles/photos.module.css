@@ -203,6 +203,7 @@
     align-self: center;
     border-radius: 50%;
     object-fit: cover;
+    transform: rotateY(180deg);
   }
 
   .videoOutput {
@@ -225,7 +226,7 @@
     left: 0;
     width: 560px;
     height: 400px;
-    transform: translate(-140px, 0px);
+    transform: translate(-140px, 0px) rotateY(180deg);
   }
 
   .circleWrapper {

@@ -19,13 +19,14 @@ export const photosProvider = () => {
 
   useEffect(() => {
     navigator.mediaDevices
-      .getUserMedia({ video: { width: 300 } })
+      .getUserMedia({ video: { width: 300, frameRate: 30, facingMode: 'user' } })
       .then(stream => {
         let video = videoRef.current
         video.setAttribute('autoplay', '')
         video.setAttribute('muted', '')
         video.setAttribute('playsinline', '')
         video.srcObject = stream
+        video.msHorizontalMirror = true; 
       })
       .catch(err => {
         console.error('Hubo un error:', err)
