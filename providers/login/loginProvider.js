@@ -17,11 +17,11 @@ export const loginProvider = () => {
         }
         const response = await login(data)
         if (response.idUser) {
-          alert(`Tu código de verificación es ${response.random}`)
           sessionStorage.setItem('email', event.target.email.value)
           sessionStorage.setItem('cellPhone', event.target.cellPhone.value)
           sessionStorage.setItem('userInfo', JSON.stringify(response))
-          router.push('codeVerification')
+          sessionStorage.setItem('token', response.token)
+          router.push('initForm')
         }
       } else {
         alert('El celular debe contener 10 dígitos')
