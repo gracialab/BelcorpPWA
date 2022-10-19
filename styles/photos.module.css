@@ -204,6 +204,7 @@
     border-radius: 50%;
     object-fit: cover;
     transform: rotateY(180deg);
+    visibility: hidden;
   }
 
   .videoOutput {
@@ -216,6 +217,7 @@
     align-self: center;
     border-radius: 50%;
     object-fit: cover;
+    transform: rotateY(180deg);
   }
 
   .canva {

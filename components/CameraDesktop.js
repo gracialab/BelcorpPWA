@@ -35,14 +35,14 @@ export const CameraDesktop = () => {
                 <div className={styles.circlePhoto}>
                   <div className={styles.circlePhotoContent}>
                     <video ref={videoRef} className={styles.video} onPlay={() => handleVideoOnPlay()} />
-                    {/* <div>
-                      <canvas ref={outputCanvas} className={styles.videoOutput}></canvas>
-                    </div> */}
-                    {modelsLoaded ?
+                    <div>
+                      <canvas ref={outputCanvas} width="1920" height="1080" className={styles.videoOutput}></canvas>
+                    </div>
+                    {/* {modelsLoaded ?
                       <div className={styles.canva} >
                         <canvas ref={canvasRef} />
                       </div> : <></>
-                    }
+                    } */}
                   </div>
                 </div>
               </div>

@@ -64,6 +64,7 @@
     object-fit: cover;
     overflow: hidden;
     transform: rotateY(180deg);
+    visibility: hidden;
   }
 
   .videoOutput {
@@ -77,6 +78,7 @@
     border-radius: 50%;
     object-fit: cover;
     overflow: hidden;
+    transform: rotateY(180deg);
   }
 
   .canva {

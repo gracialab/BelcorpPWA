@@ -1,6 +1,13 @@
 import * as faceapi from 'face-api.js'
+// import { FaceMesh, FACEMESH_FACE_OVAL,FACEMESH_RIGHT_EYE, FACEMESH_RIGHT_EYEBROW, FACEMESH_RIGHT_IRIS, FACEMESH_LEFT_EYE, FACEMESH_LEFT_EYEBROW, FACEMESH_LEFT_IRIS,FACEMESH_LIPS, FACEMESH_TESSELATION,FACEMESH_CONTOURS  } from "@mediapipe/face_mesh"
+
+import { Camera } from "@mediapipe/camera_utils"
+import { drawConnectors } from '@mediapipe/drawing_utils'
 import { useRouter } from 'next/router'
 import { useRef, useCallback, useState, useEffect } from 'react'
+
+// import '@mediapipe/drawing_utils'
+import '@mediapipe/control_utils'
 
 // import {JEELIZFACEFILTER, NN_4EXPR} from "facefilter";
 
@@ -10,7 +17,6 @@ export const photosProvider = () => {
   const [imageTwo, setImageTwo] = useState()
   const [imageThree, setImageThree] = useState()
 
-  const [modelsLoaded, setModelsLoaded] = useState(false)
   const [showBackground, setShowBackground] = useState(false) ;
 
   const videoRef = useRef()
@@ -18,6 +24,9 @@ export const photosProvider = () => {
   const outputCanvas = useRef()
 
   useEffect(() => {
+
+    const { FaceMesh } = require("@mediapipe/face_mesh")
+
     navigator.mediaDevices
       .getUserMedia({ video: { width: 300, frameRate: 30, facingMode: 'user' } })
       .then(stream => {
@@ -32,42 +41,60 @@ export const photosProvider = () => {
         console.error('Hubo un error:', err)
       })
 
-    const loadModels = async () => {
-      const MODEL_URL = '/models'
+      // if (navigator.share) {
+        const faceMesh = new FaceMesh({locateFile: (file) => {
+          return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
+        }});
+        faceMesh.setOptions({
+          maxNumFaces: 1,
+          refineLandmarks: true,
+          minDetectionConfidence: 0.5,
+          minTrackingConfidence: 0.5
+        });
+        faceMesh.onResults(onResults);
+        const camera = new Camera(videoRef.current, {
+          onFrame: async () => {
+            await faceMesh.send({image: videoRef.current});
+          },
+          width: 360,
+          height: 400
+        });
+        camera.start();
+      // }
 
-      Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
-        faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
-        faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
-        faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
-        faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL),
-      ]).then(setModelsLoaded(true))
-    }
-    loadModels()
+      
     
   }, [])
 
   function handleVideoOnPlay() {
     const width = window.screen.width
     setInterval(async () => {
-      if (canvasRef && canvasRef.current && modelsLoaded) {
-        canvasRef.current.innerHTML = faceapi.createCanvas(videoRef.current)
-        const displaySize = { width: 500, height: 400 }
+      if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
+        
+             
 
-        faceapi.matchDimensions(canvasRef.current, displaySize)
-        const detections = await faceapi.detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-
-        if (detections) {
-          const resizedDetections = faceapi.resizeResults(detections, displaySize)
-          sessionStorage.setItem('accuracy', resizedDetections.detection.score)
-          canvasRef && canvasRef.current && canvasRef.current.getContext('2d').clearRect(0, 0, 500, 400)
-
-          canvasRef && canvasRef.current && faceapi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections)
-        }
       }
     }, 1000)
     
     
+  }
+
+  function onResults(results) {
+
+    const { FACEMESH_TESSELATION } = require("@mediapipe/face_mesh")
+    const canvasElement = outputCanvas.current
+    const canvasCtx = canvasElement.getContext('2d')
+    canvasCtx.save();
+    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+    canvasCtx.drawImage(
+        results.image, 0, 0, canvasElement.width, canvasElement.height);
+    if (results.multiFaceLandmarks) {
+      for (const landmarks of results.multiFaceLandmarks) {
+        drawConnectors(canvasCtx, landmarks, FACEMESH_TESSELATION,
+                       {color: '#a5f3fc50', lineWidth: 0.4});
+      }
+    }
+    canvasCtx.restore();
   }
 
   const offBackground = (time) => {
@@ -169,7 +196,6 @@ export const photosProvider = () => {
     showBackground, 
     outputCanvas,
     imageThree,
-    modelsLoaded,
     handleVideoOnPlay
   }
 }
