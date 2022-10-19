@@ -102,51 +102,51 @@ export const photosProvider = () => {
     () => {
       setShowBackground(true)
       setTimeout(() => {
-        canvasRef.width = 1920
-        canvasRef.height = 1080
+        outputCanvas.width = 1920
+        outputCanvas.height = 1080
 
-        let ctx = canvasRef && canvasRef.current && canvasRef.current.getContext('2d')
-        ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height)
+        let ctx = outputCanvas && outputCanvas.current && outputCanvas.current.getContext('2d')
+        ctx.drawImage(videoRef.current, 0, 0, outputCanvas.current.width, outputCanvas.current.height)
 
-        let image = canvasRef.current.toDataURL('image/jpeg')
+        let image = outputCanvas.current.toDataURL('image/jpeg')
         setImageOne(image)
         sessionStorage.setItem('photo1', image)
       }, 1500);
       offBackground(2000)
     },
-    [canvasRef, videoRef]
+    [outputCanvas, videoRef]
   )
 
   const capture2 = useCallback(
     () => {
       setShowBackground(true)
       setTimeout(() => {
-        canvasRef.width = 1920
-        canvasRef.height = 1080
+        outputCanvas.width = 1920
+        outputCanvas.height = 1080
 
-        let ctx = canvasRef && canvasRef.current && canvasRef.current.getContext('2d')
-        ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height)
+        let ctx = outputCanvas && outputCanvas.current && outputCanvas.current.getContext('2d')
+        ctx.drawImage(videoRef.current, 0, 0, outputCanvas.current.width, outputCanvas.current.height)
 
-        let image = canvasRef.current.toDataURL('image/jpeg')
+        let image = outputCanvas.current.toDataURL('image/jpeg')
         setImageTwo(image)
         sessionStorage.setItem('photo2', image)
       }, 1500);
       offBackground(2000)
     },
-    [canvasRef, videoRef]
+    [outputCanvas, videoRef]
   )
 
   const capture3 = useCallback(
     () => {
       setShowBackground(true)
       setTimeout(() => {
-        canvasRef.width = 1920
-        canvasRef.height = 1080
+        outputCanvas.width = 1920
+        outputCanvas.height = 1080
 
-        let ctx = canvasRef && canvasRef.current && canvasRef.current.getContext('2d')
-        ctx.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height)
+        let ctx = outputCanvas && outputCanvas.current && outputCanvas.current.getContext('2d')
+        ctx.drawImage(videoRef.current, 0, 0, outputCanvas.current.width, outputCanvas.current.height)
 
-        let image = canvasRef.current.toDataURL('image/jpeg')
+        let image = outputCanvas.current.toDataURL('image/jpeg')
         setImageThree(image)
         sessionStorage.setItem('photo3', image)
         videoRef.current.pause()
@@ -156,7 +156,7 @@ export const photosProvider = () => {
       }, 1500);
       offBackground(2000)
     },
-    [canvasRef, videoRef]
+    [outputCanvas, videoRef]
   )
 
   return {
