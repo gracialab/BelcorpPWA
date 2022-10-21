@@ -19,9 +19,9 @@ export const questionsProvider = () => {
         {
           formCollection: questions,
           images: {
-            front: photo1Base,
-            right: photo2Base,
-            left: photo3Base
+            frente: photo1Base,
+            lado_derecho: photo2Base,
+            lado_izquierdo: photo3Base
           }
         },
         token
