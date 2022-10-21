@@ -16,6 +16,7 @@ export const photosProvider = () => {
   const [imageOne, setImageOne] = useState()
   const [imageTwo, setImageTwo] = useState()
   const [imageThree, setImageThree] = useState()
+  // const [faceMesh, SetFaceMesh] = useState()
 
   const [showBackground, setShowBackground] = useState(false);
 
@@ -90,6 +91,7 @@ export const photosProvider = () => {
       }
     }
     canvasCtx.restore();
+    // console.log(results, canvasCtx)
   }
 
   const offBackground = (time) => {
