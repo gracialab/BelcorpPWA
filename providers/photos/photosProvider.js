@@ -16,6 +16,7 @@ export const photosProvider = () => {
   const [imageOne, setImageOne] = useState()
   const [imageTwo, setImageTwo] = useState()
   const [imageThree, setImageThree] = useState()
+  // const [faceMesh, SetFaceMesh] = useState()
 
   const [showBackground, setShowBackground] = useState(false) ;
 
@@ -40,8 +41,8 @@ export const photosProvider = () => {
       .catch(err => {
         console.error('Hubo un error:', err)
       })
-
       // if (navigator.share) {
+        
         const faceMesh = new FaceMesh({locateFile: (file) => {
           return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
         }});
@@ -54,11 +55,16 @@ export const photosProvider = () => {
         faceMesh.onResults(onResults);
         const camera = new Camera(videoRef.current, {
           onFrame: async () => {
+            
             await faceMesh.send({image: videoRef.current});
           },
-          width: 360,
+          width: 342,
           height: 400
+          // width: 300,
+          // height: 400,
+
         });
+        
         camera.start();
       // }
 
@@ -95,6 +101,7 @@ export const photosProvider = () => {
       }
     }
     canvasCtx.restore();
+    // console.log(results, canvasCtx)
   }
 
   const offBackground = (time) => {
