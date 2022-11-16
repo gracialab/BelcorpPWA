@@ -4,7 +4,7 @@ import { environment } from '../environments/environment'
 export const loginService = () => {
 
   const login = async (data) => {
-    const response = await axios.post(`${environment.url_api}authApplicationBelcorp`, data)
+    const response = await axios.post(`${environment.url_api}appAuth`, data)
     if (response.status === 200) {
       return response.data
     } else {

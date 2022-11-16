@@ -4,7 +4,7 @@ import { environment } from '../environments/environment'
 export const questionsService = () => {
 
   const sendForm = async (data, token) => {
-    const response = await axios.post(`${environment.url_api}formApplicationBelcorpV1`, data, {
+    const response = await axios.post(`${environment.url_api}appForm`, data, {
       headers: {
         Authorization: `Bearer ${token}`
       }
